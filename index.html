@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Isaiah 58 Feud</title>
+<style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(#1e3a8a, #0b1437);
+        color: #fff;
+        font-family: Georgia, serif;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .w {
+        max-width: 820px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        color: #fcd34d;
+        margin: 0.3em 0;
+        font-size: 1.7rem;
+        text-shadow: 0 2px 0 #92400e;
+      }
+
+      button {
+        font: inherit;
+        font-size: 1.05rem;
+        padding: 13px 20px;
+        border: 0;
+        border-radius: 12px;
+        background: #f59e0b;
+        color: #1c1917;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 8px 0;
+        transition: transform 0.12s;
+      }
+
+      button:active {
+        transform: scale(0.96);
+      }
+
+      button:disabled {
+        opacity: 0.35;
+      }
+
+      input {
+        width: 100%;
+        padding: 14px;
+        margin: 6px 0;
+        font: inherit;
+        font-size: 1.1rem;
+        border: 2px solid #fcd34d;
+        border-radius: 10px;
+        background: #0b1437;
+        color: #fff;
+        text-align: center;
+      }
+
+      .bar {
+        display: flex;
+        height: 36px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #0008;
+        margin: 8px 0;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      .bar div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: width 0.8s ease;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .t0 {
+        background: #2563eb;
+      }
+
+      .t1 {
+        background: #dc2626;
+      }
+
+      .tm {
+        height: 8px;
+        background: #0008;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 10px 0 2px;
+      }
+
+      .tm i {
+        display: block;
+        height: 100%;
+        background: #fcd34d;
+        transform-origin: left;
+        transition: transform 0.25s linear;
+      }
+
+      .q {
+        font-size: 1.45rem;
+        margin: 14px 0;
+      }
+
+      .mute {
+        color: #9db0e8;
+        font-size: 0.95rem;
+      }
+
+      .code {
+        font-size: 4.5rem;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+        color: #fcd34d;
+      }
+
+      .o {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin: 9px 0;
+        color: #fff;
+        animation: up 0.35s both;
+      }
+
+      .o0 {
+        background: #2f6f5e;
+      }
+
+      .o1 {
+        background: #9a4a2f;
+      }
+
+      .o2 {
+        background: #3d5a99;
+      }
+
+      .o3 {
+        background: #7a4f8c;
+      }
+
+      .dim {
+        opacity: 0.3;
+      }
+
+      .win {
+        outline: 4px solid #fcd34d;
+        animation: pop 0.5s;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin: 12px 0;
+      }
+
+      .tile {
+        height: 58px;
+        border-radius: 10px;
+        background: #1d4ed8;
+        border: 2px solid #93c5fd;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px;
+        font-weight: bold;
+        overflow: hidden;
+      }
+
+      .tile i {
+        margin: auto;
+        font-style: normal;
+        font-size: 1.4rem;
+        color: #bfdbfe;
+      }
+
+      .tile.on {
+        background: #fcd34d;
+        color: #1c1917;
+        border-color: #fff;
+      }
+
+      .tile.new {
+        animation: flip 0.6s;
+      }
+
+      .tile span {
+        text-align: left;
+        font-size: 0.95rem;
+        line-height: 1.1;
+      }
+
+      .tile b {
+        background: #1c1917;
+        color: #fcd34d;
+        border-radius: 8px;
+        padding: 3px 9px;
+        margin-left: 8px;
+      }
+
+      .x {
+        font-size: 2.6rem;
+        color: #ef4444;
+        min-height: 3rem;
+        font-weight: bold;
+      }
+
+      .shake {
+        animation: sh 0.5s;
+      }
+
+      .chips {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .chips button {
+        margin: 0;
+        font-size: 0.95rem;
+        background: #1d4ed8;
+        color: #fff;
+      }
+
+      .bet button {
+        background: #0008;
+        color: #fff;
+        margin: 4px;
+        padding: 10px 16px;
+      }
+
+      .bet .on {
+        background: #fcd34d;
+        color: #1c1917;
+      }
+
+      .big {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #fcd34d;
+      }
+
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+      }
+
+      @keyframes pop {
+        50% {
+          transform: scale(1.04);
+        }
+      }
+
+      @keyframes flip {
+        from {
+          transform: rotateX(90deg);
+        }
+      }
+
+      @keyframes sh {
+        20%,
+        60% {
+          transform: translateX(-8px);
+        }
+
+        40%,
+        80% {
+          transform: translateX(8px);
+        }
+      }
+    </style></head><body><div class="w" id="app"></div>
+<script>
+// Paste your Firebase Realtime Database URL (no trailing slash)
+const DB="https://gospelfeud-default-rtdb.europe-west1.firebasedatabase.app";
+const TN=["Team Light","Team Garden"],TM=20000;
+const SP=[
+{k:"mc",q:"Isaiah 58:5 compares a bowed head to a…",o:["bulrush","willow","lamb","shepherd’s staff"],a:0,r:"Isaiah 58:5"},
+{k:"mc",q:"In 58:3 the people fast, yet still ___ all their labours.",o:["rest from","share","exact","forgive"],a:2,r:"Isaiah 58:3"},
+{k:"feud",q:"Name something the fast God chose does for others",A:[["Loose the bands of wickedness",8],["Undo the heavy burdens",8],["Let the oppressed go free",10],["Break every yoke",10],["Share bread with the hungry",12],["Cover the naked",6]],D:["Wear sackcloth and ashes","Argue and debate","Bow the head like a bulrush"],r:"Isaiah 58:6–7"},
+{k:"mc",q:"The Lord will satisfy thy soul in ___",o:["famine","drought","winter","silence"],a:1,r:"Isaiah 58:11"},
+{k:"feud",q:"Name a blessing promised to those who fast as God asks",A:[["Light breaks forth like the morning",10],["Health springs forth",8],["Righteousness goes before you",8],["“Here I am,” says the Lord",12],["The Lord guides you continually",10],["Like a watered garden",6]],D:["Great wealth","Power over kings","Fame"],r:"Isaiah 58:8–12"},
+{k:"mc",q:"Honor the Sabbath and you will ride upon the ___ of the earth",o:["rivers","high places","gates","hills"],a:1,r:"Isaiah 58:14"},
+{k:"wager",q:"FINAL WAGER! Isaiah 59:16: the Lord wondered there was no ___",o:["king","intercessor","teacher","judge"],a:1,r:"Isaiah 59:16"}
+];
+const $=i=>document.getElementById(i),app=$("app");
+const HOST=new URLSearchParams(location.search).has("host"),KEY=HOST?"h58":"p58";
+let S=JSON.parse(sessionStorage.getItem(KEY)||"null"),room=null,last="",bet=5,seen=new Set,lx=0,lq=-9,pn=0,pq=-9;
+const save=()=>sessionStorage.setItem(KEY,JSON.stringify(S));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const api=(p,m="GET",b)=>fetch(DB+"/"+p+".json",{method:m,body:b===undefined?undefined:JSON.stringify(b)}).then(r=>r.json());
+const R_=p=>"rooms/"+S.code+(p?"/"+p:"");
+const P=()=>room.players||{},L=()=>room.lock||{},sc=()=>room.sc||[0,0];
+const roster=t=>Object.keys(P()).filter(i=>P()[i].team===t).sort();
+const cap=t=>{const l=roster(t);return l.length?l[room.q%l.length]:null};
+const capName=t=>cap(t)?esc(P()[cap(t)].name):"?";
+const step=()=>SP[room.q];
+const act=()=>room.st.sw?1-room.st.c:room.st.c;
+
+function newStep(q){const f=SP[q].k==="feud";
+ return{q,phase:"play",lock:null,g:null,rv:0,dl:f?0:Date.now()+TM,
+ st:f?{r:[],t:[],x:0,c:SP.slice(0,q).filter(z=>z.k==="feud").length%2,sw:0,b:0,d:0,w:-1}:null}}
+function nextStep(){room.q+1<SP.length?api(R_(),"PATCH",newStep(room.q+1)):api(R_(),"PATCH",{phase:"final"})}
+function reveal(){const s=step(),l=L(),a=sc().slice(),k=(room.sk||[0,0]).slice();
+ for(let t=0;t<2;t++){const ok=l[t]&&l[t].v===s.a;
+  if(ok){a[t]+=s.k==="wager"?l[t].b:(k[t]>=2?10:5);k[t]++}else{if(s.k==="wager"&&l[t])a[t]-=l[t].b;k[t]=0}}
+ api(R_(),"PATCH",{rv:1,sc:a,sk:k})}
+function proc(){const r=room,s=step();if(!r||r.phase!=="play")return;
+ if(s.k!=="feud"){if(!r.rv&&((L()[0]&&L()[1])||Date.now()>r.dl+500))reveal();return}
+ const st=r.st,g=r.g;if(!g||st.d||(pq===r.q&&pn===g.n))return;pn=g.n;pq=r.q;
+ const tried=st.t||[];if(g.t!==act()||tried.includes(g.v))return;
+ const v=g.v,R=(st.r||[]).slice();let b=st.b,x=st.x,sw=st.sw,d=0,w=-1;
+ if(v<6){R.push(v);b+=s.A[v][1];if(sw){d=1;w=1-st.c}else if(R.length===6){d=1;w=st.c}}
+ else if(sw){d=1;w=st.c}else{x++;if(x>=3)sw=1}
+ const u={st:{r:R,t:tried.concat(v),x,c:st.c,sw,b,d,w}};
+ if(d){const a=sc().slice();a[w]+=b;u.sc=a}
+ api(R_(),"PATCH",u)}
+
+async function poll(){try{room=await api(R_());if(HOST)proc();const k=JSON.stringify(room);if(k!==last){last=k;draw()}}catch(e){}setTimeout(poll,1200)}
+setInterval(()=>{if(!room||room.phase!=="play"||!room.dl||room.rv)return;const f=Math.max(0,(room.dl-Date.now())/TM),e=$("ti");if(e){e.style.transform="scaleX("+f+")";$("tt").textContent=Math.ceil(f*TM/1000)}},250);
+
+function bar(){const a=Math.max(0,sc()[0]),b=Math.max(0,sc()[1]),p=a+b?Math.min(85,Math.max(15,a/(a+b)*100)):50;
+ return'<div class="bar"><div class="t0" style="width:'+p+'%">'+TN[0]+' '+sc()[0]+'</div><div class="t1" style="width:'+(100-p)+'%">'+TN[1]+' '+sc()[1]+'</div></div>'}
+function opts(s,can){const r=room.rv;
+ return s.o.map((t,i)=>'<button class="o o'+i+(r?(i===s.a?' win':' dim'):'')+'" style="animation-delay:'+i*.08+'s"'+(can?' onclick="lockIn('+i+')"':' disabled')+'>'+esc(t)+'</button>').join("")}
+function board(s){const st=room.st,R=st.r||[];
+ let h='<div class="grid">'+s.A.map((a,i)=>{const on=R.includes(i);
+  return'<div class="tile'+(on?' on'+(seen.has(i)?'':' new'):'')+'">'+(on?'<span>'+esc(a[0])+'</span><b>'+a[1]+'</b>':'<i>'+(i+1)+'</i>')+'</div>'}).join("")+'</div>';
+ h+='<div class="x'+(st.x>lx?' shake':'')+'">'+"✗ ".repeat(st.x||0)+'</div>';
+ R.forEach(i=>seen.add(i));lx=st.x||0;return h}
+function winner(){const[a,b]=sc();return a===b?"It’s a tie!":TN[a>b?0:1]+" wins!"}
+function status(){const st=room.st;
+ if(st.d)return'<div class="big">'+TN[st.w]+' takes '+st.b+' points!</div>';
+ return'<p>'+(st.sw?'<b>STEAL!</b> ':'')+'<b>'+TN[act()]+'</b> to guess · Captain: '+capName(act())+' · Bank: '+st.b+'</p>'}
+
+/* HOST */
+async function hostInit(){
+ if(!S){S={code:Array.from({length:4},()=>"ABCDEFGHJKLMNPQRSTUVWXYZ"[Math.random()*24|0]).join("")};save();
+  await api(R_(),"PUT",{q:-1,phase:"lobby"})}
+ poll()}
+function hostDraw(){
+ if(!room){app.innerHTML="<p>Room not found. Clear tab storage and reload.</p>";return}
+ if(room.q!==lq){seen.clear();lx=0;lq=room.q}
+ const n=Object.keys(P()).length;let h;
+ if(room.phase==="lobby")h='<h1>Isaiah 58 Feud</h1><p>Join at <b>'+esc(location.host+location.pathname)+'</b></p><div class="code">'+S.code+'</div><p class="mute">'+Object.values(P()).map(p=>esc(p.name)+' ('+TN[p.team].split(" ")[1]+')').join(" · ")+'</p><button onclick="api(R_(),\'PATCH\',newStep(0))">Start game ('+n+' players)</button>';
+ else if(room.phase==="final")h=bar()+'<h1>'+winner()+'</h1><button onclick="sessionStorage.removeItem(KEY);location.reload()">New game</button>';
+ else{const s=step();h=bar();
+  if(s.k==="feud")h+='<div class="q">'+esc(s.q)+'</div>'+board(s)+status()+(room.st.d?'<p class="mute">'+s.r+'</p><button onclick="nextStep()">Next</button>':'');
+  else{const l=L();h+='<div class="q">'+esc(s.q)+'</div>'+(room.rv?'':'<div class="tm"><i id="ti"></i></div><div class="big" id="tt"></div>')+opts(s,0)+
+   '<p class="mute">'+[0,1].map(t=>TN[t]+' ('+capName(t)+'): '+(l[t]?'locked ✓':'thinking…')).join(' · ')+'</p>'+
+   (room.rv?'<p class="mute">'+s.r+'</p><button onclick="nextStep()">Next</button>':'<button onclick="reveal()">Reveal now</button>')}}
+ app.innerHTML=h}
+
+/* PLAYER */
+function joinForm(m){app.innerHTML='<h1>Isaiah 58 Feud</h1><input id="c" placeholder="Room code" maxlength="4" autocapitalize="characters"><input id="n" placeholder="Your name" maxlength="16"><button onclick="join()">Join</button><p id="e" class="mute">'+(m||"")+'</p>'}
+async function join(){
+ const c=$("c").value.trim().toUpperCase(),nm=$("n").value.trim();if(!c||!nm)return;
+ const r=await api("rooms/"+c);if(!r){$("e").textContent="Room not found.";return}
+ const id=Math.random().toString(36).slice(2,9),team=Object.keys(r.players||{}).length%2;
+ S={code:c,id,team};await api("rooms/"+c+"/players/"+id,"PUT",{name:nm,team});save();poll()}
+async function lockIn(v){const t=S.team;if(L()[t])return;(room.lock=room.lock||{})[t]={v,b:bet};draw();await api(R_("lock/"+t),"PUT",{v,b:bet})}
+async function guess(v){await api(R_("g"),"PUT",{t:S.team,v,n:Date.now()})}
+function setBet(b){bet=b;draw()}
+function playerDraw(){
+ if(!room||!P()[S.id]){sessionStorage.removeItem(KEY);S=null;joinForm("Room not found.");return}
+ if(room.q!==lq){seen.clear();lx=0;lq=room.q}
+ const t=S.team,me=S.id===cap(t),h0='<div class="mute">'+esc(P()[S.id].name)+' · '+TN[t]+(me?' · ⭐ CAPTAIN':'')+'</div>';let h=h0;
+ if(room.phase==="lobby")h+='<h1>You’re in!</h1><p>You’re on <b>'+TN[t]+'</b>. Waiting for the host…</p>';
+ else if(room.phase==="final")h+=bar()+'<h1>'+winner()+'</h1>';
+ else{const s=step();h+=bar()+'<div class="q">'+esc(s.q)+'</div>';
+  if(s.k==="feud"){const st=room.st,mine=act()===t,tr=st.t||[];
+   h+=board(s)+status();
+   if(!st.d){h+=mine&&me?'<p>Pick an answer!</p>':'<p class="mute">'+(mine?'Help your captain: '+capName(t)+' decides':'Other team is guessing…')+'</p>';
+    const all=s.A.map(a=>a[0]).concat(s.D),o=all.map((_,i)=>i).sort((a,b)=>(a*4%9)-(b*4%9));
+    h+='<div class="chips">'+o.map(i=>'<button'+(mine&&me&&!tr.includes(i)?' onclick="guess('+i+')"':' disabled')+'>'+esc(all[i])+'</button>').join("")+'</div>'}}
+  else{const done=!!L()[t];
+   if(s.k==="wager"&&me&&!done&&!room.rv)h+='<div class="bet">Bet: '+[5,10,15].map(b=>'<button class="'+(bet===b?'on':'')+'" onclick="setBet('+b+')">'+b+'</button>').join("")+'</div>';
+   if(!room.rv)h+='<div class="tm"><i id="ti"></i></div><div class="big" id="tt"></div>';
+   h+=opts(s,me&&!done&&!room.rv);
+   h+=room.rv?'<p class="big">'+(L()[t]&&L()[t].v===s.a?'Correct! ✓':'Not this time')+'</p>':'<p class="mute">'+(done?'Locked in ✓':me?'Your team is counting on you!':'Discuss! '+capName(t)+' taps the answer.')+'</p>'}}
+ app.innerHTML=h}
+
+const draw=()=>HOST?hostDraw():playerDraw();
+if(DB.indexOf("PASTE")===0)app.innerHTML="<p>Add your Firebase database URL at the top of index.html.</p>";
+else if(HOST)hostInit();else if(S)poll();else joinForm();
+</script></body></html>
