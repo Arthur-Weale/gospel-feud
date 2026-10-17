@@ -1,292 +1,43 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Isaiah 58 Feud</title>
+<title>Gospel Feud - Isaiah 58 Feud</title>
 <style>
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        background: radial-gradient(#1e3a8a, #0b1437);
-        color: #fff;
-        font-family: Georgia, serif;
-        padding: 14px;
-        text-align: center;
-      }
-
-      .w {
-        max-width: 820px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        color: #fcd34d;
-        margin: 0.3em 0;
-        font-size: 1.7rem;
-        text-shadow: 0 2px 0 #92400e;
-      }
-
-      button {
-        font: inherit;
-        font-size: 1.05rem;
-        padding: 13px 20px;
-        border: 0;
-        border-radius: 12px;
-        background: #f59e0b;
-        color: #1c1917;
-        font-weight: bold;
-        cursor: pointer;
-        margin: 8px 0;
-        transition: transform 0.12s;
-      }
-
-      button:active {
-        transform: scale(0.96);
-      }
-
-      button:disabled {
-        opacity: 0.35;
-      }
-
-      input {
-        width: 100%;
-        padding: 14px;
-        margin: 6px 0;
-        font: inherit;
-        font-size: 1.1rem;
-        border: 2px solid #fcd34d;
-        border-radius: 10px;
-        background: #0b1437;
-        color: #fff;
-        text-align: center;
-      }
-
-      .bar {
-        display: flex;
-        height: 36px;
-        border-radius: 18px;
-        overflow: hidden;
-        background: #0008;
-        margin: 8px 0;
-        font-weight: bold;
-        font-size: 0.9rem;
-      }
-
-      .bar div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: width 0.8s ease;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-
-      .t0 {
-        background: #2563eb;
-      }
-
-      .t1 {
-        background: #dc2626;
-      }
-
-      .tm {
-        height: 8px;
-        background: #0008;
-        border-radius: 4px;
-        overflow: hidden;
-        margin: 10px 0 2px;
-      }
-
-      .tm i {
-        display: block;
-        height: 100%;
-        background: #fcd34d;
-        transform-origin: left;
-        transition: transform 0.25s linear;
-      }
-
-      .q {
-        font-size: 1.45rem;
-        margin: 14px 0;
-      }
-
-      .mute {
-        color: #9db0e8;
-        font-size: 0.95rem;
-      }
-
-      .code {
-        font-size: 4.5rem;
-        letter-spacing: 0.15em;
-        font-weight: bold;
-        color: #fcd34d;
-      }
-
-      .o {
-        display: block;
-        width: 100%;
-        text-align: left;
-        margin: 9px 0;
-        color: #fff;
-        animation: up 0.35s both;
-      }
-
-      .o0 {
-        background: #2f6f5e;
-      }
-
-      .o1 {
-        background: #9a4a2f;
-      }
-
-      .o2 {
-        background: #3d5a99;
-      }
-
-      .o3 {
-        background: #7a4f8c;
-      }
-
-      .dim {
-        opacity: 0.3;
-      }
-
-      .win {
-        outline: 4px solid #fcd34d;
-        animation: pop 0.5s;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin: 12px 0;
-      }
-
-      .tile {
-        height: 58px;
-        border-radius: 10px;
-        background: #1d4ed8;
-        border: 2px solid #93c5fd;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 12px;
-        font-weight: bold;
-        overflow: hidden;
-      }
-
-      .tile i {
-        margin: auto;
-        font-style: normal;
-        font-size: 1.4rem;
-        color: #bfdbfe;
-      }
-
-      .tile.on {
-        background: #fcd34d;
-        color: #1c1917;
-        border-color: #fff;
-      }
-
-      .tile.new {
-        animation: flip 0.6s;
-      }
-
-      .tile span {
-        text-align: left;
-        font-size: 0.95rem;
-        line-height: 1.1;
-      }
-
-      .tile b {
-        background: #1c1917;
-        color: #fcd34d;
-        border-radius: 8px;
-        padding: 3px 9px;
-        margin-left: 8px;
-      }
-
-      .x {
-        font-size: 2.6rem;
-        color: #ef4444;
-        min-height: 3rem;
-        font-weight: bold;
-      }
-
-      .shake {
-        animation: sh 0.5s;
-      }
-
-      .chips {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-
-      .chips button {
-        margin: 0;
-        font-size: 0.95rem;
-        background: #1d4ed8;
-        color: #fff;
-      }
-
-      .bet button {
-        background: #0008;
-        color: #fff;
-        margin: 4px;
-        padding: 10px 16px;
-      }
-
-      .bet .on {
-        background: #fcd34d;
-        color: #1c1917;
-      }
-
-      .big {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #fcd34d;
-      }
-
-      @keyframes up {
-        from {
-          opacity: 0;
-          transform: translateY(12px);
-        }
-      }
-
-      @keyframes pop {
-        50% {
-          transform: scale(1.04);
-        }
-      }
-
-      @keyframes flip {
-        from {
-          transform: rotateX(90deg);
-        }
-      }
-
-      @keyframes sh {
-        20%,
-        60% {
-          transform: translateX(-8px);
-        }
-
-        40%,
-        80% {
-          transform: translateX(8px);
-        }
-      }
-    </style></head><body><div class="w" id="app"></div>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(#1e3a8a,#0b1437);color:#fff;font-family:Georgia,serif;padding:14px;text-align:center}
+.w{max-width:820px;margin:0 auto}
+h1{color:#fcd34d;margin:.3em 0;font-size:1.7rem;text-shadow:0 2px 0 #92400e}
+button{font:inherit;font-size:1.05rem;padding:13px 20px;border:0;border-radius:12px;background:#f59e0b;color:#1c1917;font-weight:bold;cursor:pointer;margin:8px 0;transition:transform .12s}
+button:active{transform:scale(.96)}button:disabled{opacity:.35}
+input{width:100%;padding:14px;margin:6px 0;font:inherit;font-size:1.1rem;border:2px solid #fcd34d;border-radius:10px;background:#0b1437;color:#fff;text-align:center}
+.bar{display:flex;height:36px;border-radius:18px;overflow:hidden;background:#0008;margin:8px 0;font-weight:bold;font-size:.9rem}
+.bar div{display:flex;align-items:center;justify-content:center;transition:width .8s ease;white-space:nowrap;overflow:hidden}
+.t0{background:#2563eb}.t1{background:#dc2626}
+.tm{height:8px;background:#0008;border-radius:4px;overflow:hidden;margin:10px 0 2px}
+.tm i{display:block;height:100%;background:#fcd34d;transform-origin:left;transition:transform .25s linear}
+.q{font-size:1.45rem;margin:14px 0}.mute{color:#9db0e8;font-size:.95rem}
+.code{font-size:4.5rem;letter-spacing:.15em;font-weight:bold;color:#fcd34d}
+.o{display:block;width:100%;text-align:left;margin:9px 0;color:#fff;animation:up .35s both}
+.o0{background:#2f6f5e}.o1{background:#9a4a2f}.o2{background:#3d5a99}.o3{background:#7a4f8c}
+.dim{opacity:.3}.win{outline:4px solid #fcd34d;animation:pop .5s}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.tile{height:58px;border-radius:10px;background:#1d4ed8;border:2px solid #93c5fd;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-weight:bold;overflow:hidden}
+.tile i{margin:auto;font-style:normal;font-size:1.4rem;color:#bfdbfe}
+.tile.on{background:#fcd34d;color:#1c1917;border-color:#fff}.tile.new{animation:flip .6s}
+.tile span{text-align:left;font-size:.95rem;line-height:1.1}.tile b{background:#1c1917;color:#fcd34d;border-radius:8px;padding:3px 9px;margin-left:8px}
+.x{font-size:2.6rem;color:#ef4444;min-height:3rem;font-weight:bold}.shake{animation:sh .5s}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}.chips button{margin:0;font-size:.95rem;background:#1d4ed8;color:#fff}
+.bet button{background:#0008;color:#fff;margin:4px;padding:10px 16px}.bet .on{background:#fcd34d;color:#1c1917}
+.big{font-size:2rem;font-weight:bold;color:#fcd34d}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+@keyframes pop{50%{transform:scale(1.04)}}
+@keyframes flip{from{transform:rotateX(90deg)}}
+@keyframes sh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+</style></head><body><div class="w" id="app"></div>
 <script>
 // Paste your Firebase Realtime Database URL (no trailing slash)
 const DB="https://gospelfeud-default-rtdb.europe-west1.firebasedatabase.app";
-const TN=["Team Light","Team Garden"],TM=20000;
+const TN=["Team Light","Team Garden"],TM=30000;
 const SP=[
 {k:"mc",q:"Isaiah 58:5 compares a bowed head to a…",o:["bulrush","willow","lamb","shepherd’s staff"],a:0,r:"Isaiah 58:5"},
 {k:"mc",q:"In 58:3 the people fast, yet still ___ all their labours.",o:["rest from","share","exact","forgive"],a:2,r:"Isaiah 58:3"},
@@ -318,7 +69,9 @@ function reveal(){const s=step(),l=L(),a=sc().slice(),k=(room.sk||[0,0]).slice()
  for(let t=0;t<2;t++){const ok=l[t]&&l[t].v===s.a;
   if(ok){a[t]+=s.k==="wager"?l[t].b:(k[t]>=2?10:5);k[t]++}else{if(s.k==="wager"&&l[t])a[t]-=l[t].b;k[t]=0}}
  api(R_(),"PATCH",{rv:1,sc:a,sk:k})}
-function proc(){const r=room,s=step();if(!r||r.phase!=="play")return;
+function proc(){const r=room;if(!r)return;
+ if(r.phase==="lobby"){const u=teamPatch();if(Object.keys(u).length)api(R_(),"PATCH",u);return}
+ const s=step();if(r.phase!=="play")return;
  if(s.k!=="feud"){if(!r.rv&&((L()[0]&&L()[1])||Date.now()>r.dl+500))reveal();return}
  const st=r.st,g=r.g;if(!g||st.d||(pq===r.q&&pn===g.n))return;pn=g.n;pq=r.q;
  const tried=st.t||[];if(g.t!==act()||tried.includes(g.v))return;
@@ -329,7 +82,7 @@ function proc(){const r=room,s=step();if(!r||r.phase!=="play")return;
  if(d){const a=sc().slice();a[w]+=b;u.sc=a}
  api(R_(),"PATCH",u)}
 
-async function poll(){try{room=await api(R_());if(HOST)proc();const k=JSON.stringify(room);if(k!==last){last=k;draw()}}catch(e){}setTimeout(poll,1200)}
+async function poll(){if(!S)return;try{room=await api(R_());if(HOST)proc();const k=JSON.stringify(room);if(k!==last){last=k;draw()}}catch(e){}setTimeout(poll,1200)}
 setInterval(()=>{if(!room||room.phase!=="play"||!room.dl||room.rv)return;const f=Math.max(0,(room.dl-Date.now())/TM),e=$("ti");if(e){e.style.transform="scaleX("+f+")";$("tt").textContent=Math.ceil(f*TM/1000)}},250);
 
 function bar(){const a=Math.max(0,sc()[0]),b=Math.max(0,sc()[1]),p=a+b?Math.min(85,Math.max(15,a/(a+b)*100)):50;
@@ -347,20 +100,27 @@ function status(){const st=room.st;
  return'<p>'+(st.sw?'<b>STEAL!</b> ':'')+'<b>'+TN[act()]+'</b> to guess · Captain: '+capName(act())+' · Bank: '+st.b+'</p>'}
 
 /* HOST */
+const mkCode=()=>Array.from({length:4},()=>"ABCDEFGHJKLMNPQRSTUVWXYZ"[Math.random()*24|0]).join("");
 async function hostInit(){
- if(!S){S={code:Array.from({length:4},()=>"ABCDEFGHJKLMNPQRSTUVWXYZ"[Math.random()*24|0]).join("")};save();
+ if(!S){S={code:mkCode()};save();
   await api(R_(),"PUT",{q:-1,phase:"lobby"})}
  poll()}
+function teamPatch(){const u={},ids=Object.keys(P()).sort((a,b)=>(P()[a].ts||0)-(P()[b].ts||0)||(a<b?-1:1));
+ ids.forEach((id,i)=>{if(P()[id].team!==i%2)u["players/"+id+"/team"]=i%2});return u}
+async function startGame(){await api(R_(),"PATCH",Object.assign(newStep(0),teamPatch()))}
+async function newGame(){const old=S.code,c=mkCode();
+ await api("rooms/"+c,"PUT",{q:-1,phase:"lobby"});await api("rooms/"+old+"/nx","PUT",c);
+ S={code:c};save();last=""}
 function hostDraw(){
  if(!room){app.innerHTML="<p>Room not found. Clear tab storage and reload.</p>";return}
  if(room.q!==lq){seen.clear();lx=0;lq=room.q}
  const n=Object.keys(P()).length;let h;
- if(room.phase==="lobby")h='<h1>Isaiah 58 Feud</h1><p>Join at <b>'+esc(location.host+location.pathname)+'</b></p><div class="code">'+S.code+'</div><p class="mute">'+Object.values(P()).map(p=>esc(p.name)+' ('+TN[p.team].split(" ")[1]+')').join(" · ")+'</p><button onclick="api(R_(),\'PATCH\',newStep(0))">Start game ('+n+' players)</button>';
- else if(room.phase==="final")h=bar()+'<h1>'+winner()+'</h1><button onclick="sessionStorage.removeItem(KEY);location.reload()">New game</button>';
+ if(room.phase==="lobby")h='<h1>Isaiah 58 Feud</h1><p>Join at <b>'+esc(location.host+location.pathname)+'</b></p><div class="code">'+S.code+'</div>'+[0,1].map(t=>'<p><b>'+TN[t]+'</b>: '+Object.values(P()).filter(p=>p.team===t).map(p=>esc(p.name)).join(" · ")+'</p>').join("")+'<button onclick="startGame()">Start game ('+n+' players)</button>';
+ else if(room.phase==="final")h=bar()+'<h1>'+winner()+'</h1><button onclick="newGame()">Play again (new room)</button>';
  else{const s=step();h=bar();
   if(s.k==="feud")h+='<div class="q">'+esc(s.q)+'</div>'+board(s)+status()+(room.st.d?'<p class="mute">'+s.r+'</p><button onclick="nextStep()">Next</button>':'');
-  else{const l=L();h+='<div class="q">'+esc(s.q)+'</div>'+(room.rv?'':'<div class="tm"><i id="ti"></i></div><div class="big" id="tt"></div>')+opts(s,0)+
-   '<p class="mute">'+[0,1].map(t=>TN[t]+' ('+capName(t)+'): '+(l[t]?'locked ✓':'thinking…')).join(' · ')+'</p>'+
+  else{const l=L();h+='<div class="q">'+esc(s.q)+'</div>'+(s.k==="wager"&&!room.rv?'<p class="mute">Captains: choose your bet (5, 10 or 15) on your phone first!</p>':'')+(room.rv?'':'<div class="tm"><i id="ti"></i></div><div class="big" id="tt"></div>')+opts(s,0)+
+   '<p class="mute">'+[0,1].map(t=>TN[t]+' ('+capName(t)+'): '+(l[t]?(room.rv&&s.k==="wager"?'bet '+l[t].b:'locked ✓'):'thinking…')).join(' · ')+'</p>'+
    (room.rv?'<p class="mute">'+s.r+'</p><button onclick="nextStep()">Next</button>':'<button onclick="reveal()">Reveal now</button>')}}
  app.innerHTML=h}
 
@@ -370,16 +130,22 @@ async function join(){
  const c=$("c").value.trim().toUpperCase(),nm=$("n").value.trim();if(!c||!nm)return;
  const r=await api("rooms/"+c);if(!r){$("e").textContent="Room not found.";return}
  const id=Math.random().toString(36).slice(2,9),team=Object.keys(r.players||{}).length%2;
- S={code:c,id,team};await api("rooms/"+c+"/players/"+id,"PUT",{name:nm,team});save();poll()}
-async function lockIn(v){const t=S.team;if(L()[t])return;(room.lock=room.lock||{})[t]={v,b:bet};draw();await api(R_("lock/"+t),"PUT",{v,b:bet})}
-async function guess(v){await api(R_("g"),"PUT",{t:S.team,v,n:Date.now()})}
+ S={code:c,id,team};await api("rooms/"+c+"/players/"+id,"PUT",{name:nm,team,ts:Date.now()});save();poll()}
+async function lockIn(v){const t=P()[S.id].team;if(L()[t])return;(room.lock=room.lock||{})[t]={v,b:bet};draw();await api(R_("lock/"+t),"PUT",{v,b:bet})}
+async function guess(v){await api(R_("g"),"PUT",{t:P()[S.id].team,v,n:Date.now()})}
 function setBet(b){bet=b;draw()}
+function leave(){sessionStorage.removeItem(KEY);S=null;room=null;joinForm()}
+let jn=0;
+async function join2(c){if(jn)return;jn=1;try{const nm=P()[S.id].name,r=await api("rooms/"+c);if(!r)return;
+ const id=Math.random().toString(36).slice(2,9),team=Object.keys(r.players||{}).length%2;
+ await api("rooms/"+c+"/players/"+id,"PUT",{name:nm,team,ts:Date.now()});S={code:c,id,team};save();last=""}finally{jn=0}}
 function playerDraw(){
  if(!room||!P()[S.id]){sessionStorage.removeItem(KEY);S=null;joinForm("Room not found.");return}
+ if(room.nx){join2(room.nx);return}
  if(room.q!==lq){seen.clear();lx=0;lq=room.q}
- const t=S.team,me=S.id===cap(t),h0='<div class="mute">'+esc(P()[S.id].name)+' · '+TN[t]+(me?' · ⭐ CAPTAIN':'')+'</div>';let h=h0;
- if(room.phase==="lobby")h+='<h1>You’re in!</h1><p>You’re on <b>'+TN[t]+'</b>. Waiting for the host…</p>';
- else if(room.phase==="final")h+=bar()+'<h1>'+winner()+'</h1>';
+ const t=P()[S.id].team,me=S.id===cap(t),h0='<div class="mute">'+esc(P()[S.id].name)+' · '+TN[t]+(me?' · ⭐ CAPTAIN':'')+'</div>';let h=h0;
+ if(room.phase==="lobby")h+='<h1>You’re in!</h1><p>You’re on <b>'+TN[t]+'</b>. Sit with your team!</p><p class="mute">Waiting for the host to start…</p>';
+ else if(room.phase==="final")h+=bar()+'<h1>'+winner()+'</h1><p class="mute">Waiting for the host to start another round…</p><button onclick="leave()">Join a new game</button>';
  else{const s=step();h+=bar()+'<div class="q">'+esc(s.q)+'</div>';
   if(s.k==="feud"){const st=room.st,mine=act()===t,tr=st.t||[];
    h+=board(s)+status();
